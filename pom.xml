@@ -75,19 +75,14 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.maven.artifact.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-rest-webmvc</artifactId>
 			<version>2.6.10.RELEASE</version>
-			<!-- <exclusions>
-				<exclusion>
-					<groupId>org.springframework.data</groupId>
-					<artifactId>spring-data-commons</artifactId>
-				</exclusion>
-			</exclusions> -->
+			<!-- <exclusions> <exclusion> <groupId>org.springframework.data</groupId> <artifactId>spring-data-commons</artifactId> </exclusion> </exclusions> -->
 		</dependency>
-		
+
 		<dependency>
 			<groupId>egovframework.rte</groupId>
 			<artifactId>egovframework.rte.fdl.idgnr</artifactId>
@@ -582,14 +577,14 @@
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>1.7.25</version>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>org.projectlombok</groupId>
-		    <artifactId>lombok</artifactId>
-		    <version>1.16.20</version>
-		    <scope>provided</scope>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.20</version>
+			<scope>provided</scope>
 		</dependency>
-				
+
 	</dependencies>
 	<build>
 		<defaultGoal>install</defaultGoal>
@@ -599,12 +594,25 @@
 		<outputDirectory>${basedir}/target/classes</outputDirectory>
 		<resources>
 			<resource>
+				<directory>${basedir}/webapp</directory>
+			</resource>
+			<resource>
 				<directory>${basedir}/src/main/resources</directory>
 			</resource>
-			<!-- <resource> <directory>${basedir}/profile/${env}</directory> <targetPath>${basedir}/target/classes</targetPath> </resource> -->
+		<!-- 	<resource>
+				<directory>${basedir}/profile/${env}</directory>
+				<targetPath>${basedir}/target/classes</targetPath>
+			</resource> -->
 		</resources>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.3</version>
+					<configuration>
+						<warSourceDirectory>webapp</warSourceDirectory>
+					</configuration>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.tomcat.maven</groupId>
 					<artifactId>tomcat7-maven-plugin</artifactId>
