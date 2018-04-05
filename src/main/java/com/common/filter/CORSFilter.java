@@ -13,13 +13,19 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.common.context.CustomControllerAdvice;
 
 /**
  * Servlet Filter implementation class CORSFilter
  */
 // Enable it for Servlet 3.x implementations
-@WebFilter(asyncSupported = true, urlPatterns = { "/*" })
+@WebFilter(asyncSupported = true, urlPatterns = { "/api/*" })
 public class CORSFilter implements Filter {
+
+    private static final Logger logger = LoggerFactory.getLogger(CORSFilter.class);
+
     /**
      * Default constructor.
      */
@@ -40,8 +46,7 @@ public class CORSFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)
             throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        System.err.println("▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶ HTTP Method: " + request.getMethod());
-        System.err.println("▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶ HTTP Request Header: " + getHeader(request));
+        logger.info("▶ URL : {}, HTTP Method: {}, Request Header: {}",request.getRequestURI(), request.getMethod(),getHeader(request));
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         // Authorize (allow) all domains to consume the content
         response.setHeader("Access-Control-Allow-Origin", "*"); // application/x-spring-data-verbose+json

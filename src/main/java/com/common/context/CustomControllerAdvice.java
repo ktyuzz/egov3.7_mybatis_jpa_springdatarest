@@ -32,15 +32,15 @@ public class CustomControllerAdvice {
     private final ObjectMapper  mapper = new ObjectMapper();
     private static final Logger logger = LoggerFactory.getLogger(CustomControllerAdvice.class);
 
-    /**
-     * client 단에서 배열 형태로 넘어 오는 데이터가 스프링에서 bind 될때, defalut max length가 256이다 하여 이를 1024로 증가시킴.
-     * 
-     * @param binder
-     */
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        binder.setAutoGrowCollectionLimit(1024);
-    }
+//    /**
+//     * client 단에서 배열 형태로 넘어 오는 데이터가 스프링에서 bind 될때, defalut max length가 256이다 하여 이를 1024로 증가시킴.
+//     * 
+//     * @param binder
+//     */
+//    @InitBinder
+//    public void initBinder(WebDataBinder binder) {
+//        binder.setAutoGrowCollectionLimit(1024);
+//    }
 
     /**
      * 
@@ -77,7 +77,7 @@ public class CustomControllerAdvice {
             model = new ModelAndView("jsonView");
         } else {
             // json 이 아닐경우 error page 로 이동
-            model = new ModelAndView("egov/cmm/error/egovError.jsp");
+            model = new ModelAndView("egovframework/com/cmm/error/egovError");
             model.addObject("exception", exception);
         }
         model.addObject("statusReason", httpStatus.getReasonPhrase()); // 상태에 대한 설명/이유
@@ -123,8 +123,11 @@ public class CustomControllerAdvice {
     }
 
     public Map<String, Object> getParameter(HttpServletRequest request) {
-        boolean isMultipartForm = (request.getContentType().indexOf("multipart/form-data") >= 0);
         Map<String, Object> paramMap = new HashMap<String, Object>();
+        if(request==null || request.getContentType() ==null){
+            return paramMap;
+        }
+        boolean isMultipartForm = (request.getContentType().indexOf("multipart/form-data") >= 0);
         try {
             Enumeration<String> paramNames = (Enumeration<String>) request.getParameterNames();
             String paramName = null;

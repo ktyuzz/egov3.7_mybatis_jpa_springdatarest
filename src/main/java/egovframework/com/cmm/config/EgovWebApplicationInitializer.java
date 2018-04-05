@@ -69,7 +69,7 @@ public class EgovWebApplicationInitializer implements WebApplicationInitializer 
         XmlWebApplicationContext xmlWebApplicationContext = new XmlWebApplicationContext();
         xmlWebApplicationContext.setConfigLocation("/WEB-INF/config/egovframework/springmvc/egov-com-*.xml");
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(xmlWebApplicationContext));
-        dispatcher.addMapping("*.do","*.json","/*");
+        dispatcher.addMapping("/");
         dispatcher.setLoadOnStartup(1);
         if ("security".equals(EgovProperties.getProperty("Globals.Auth").trim())) {
             // -------------------------------------------------------------
