@@ -17,18 +17,46 @@
 		<jsp:forward page="/uat/uia/egovLoginUsr.do"/>
 	</c:if>
 	<p/><p/><p/>
-	<a href="/com/sysmgnt/category/egovCategoryList.do" >JPA 테스트는 여길 참고하세요 ---▶ 클릭클릭 ----▶ /com/sysmgnt/category/egovCategoryList.do </a></br>
-		
-	<a href="/api/sysmgnt/categories" >/api/sysmgnt/categories </a></br>
+	■ Spring Data Rest 요청처리 목록</br>
+	<a href="/api" >/api</a></br>
+	<a href="/api/profile" >/api/profile</a></br>
+	<a href="/api/adminLogs" >/api/adminLogs</a></br>
+	<a href="/api/customerCodes" >/api/customerCodes</a></br>
+	<a href="/api/categories" >/api/categories</a></br>
 	
-	<a href="/api/sysmgnt/category/CATEGORY-00000000000" >/api/sysmgnt/category/CATEGORY-00000000000 </a></br>
-	
-	<a href="/api/sysmgnt/category/CATEGORY-00000000001" >/api/sysmgnt/category/CATEGORY-00000000001 </a></br>
-	
-	<a href="/api/sysmgnt/category/CATEGORY-00000000002" >/api/sysmgnt/category/CATEGORY-00000000002 </a></br>
-	
-	<a href="/api/sysmgnt/category/CATEGORY-00000000003" >/api/sysmgnt/category/CATEGORY-00000000003 </a></br>
-		
+	■ Spring Data Rest 요청 방법</br>
+	</br> /api/{repository}/{id}/{property}     ,methods=[GET]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/{id}/{property}/{propertyId}     ,methods=[GET]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/{id}/{property}     ,methods=[GET]    ,produces=[application/x-spring-data-compact+json || text/uri-list
+	</br> /api/{repository}/{id}/{property}/{propertyId}     ,methods=[DELETE]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/{id}/{property}     ,methods=[DELETE]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/{id}/{property}     ,methods=[PATCH || PUT || POST],consumes=[application/json || application/x-spring-data-compact+json || text/uri-list]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/search]     ,methods=[GET]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/search/{search}     ,methods=[OPTIONS]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/search/{search}     ,methods=[HEAD]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/search/{search}     ,methods=[GET]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/search]     ,methods=[HEAD]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/search]     ,methods=[OPTIONS]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/search/{search}     ,methods=[GET]    ,produces=[application/x-spring-data-compact+json
+	</br> /api/ || /api]     ,methods=[GET]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/ || /api]     ,methods=[HEAD]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/ || /api]     ,methods=[OPTIONS]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/{id}     ,methods=[GET]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/{id}     ,methods=[PUT]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/{id}     ,methods=[OPTIONS]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}     ,methods=[HEAD]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}     ,methods=[GET]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/{id}     ,methods=[PATCH]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}     ,methods=[OPTIONS]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}     ,methods=[GET]    ,produces=[application/x-spring-data-compact+json || text/uri-list
+	</br> /api/{repository}     ,methods=[POST]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/{id}     ,methods=[HEAD]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/{repository}/{id}     ,methods=[DELETE]    ,produces=[application/json;charset=UTF-8 || application/json
+	</br> /api/profile/{repository}     ,methods=[GET]    ,produces=[application/alps+json || */*
+	</br> /api/profile/{repository}     ,methods=[OPTIONS]    ,produces=[application/alps+json
+	</br> /api/profile/{repository}     ,methods=[GET]    ,produces=[application/schema+json
+	</br> /api/profile     ,methods=[OPTIONS]
+	</br> /api/profile     ,methods=[GET]
 	<p/><p/><p/>
 <!-- 	<b>실행시 오류사항이 있으시면 표준프레임워크센터로 연락하시기 바랍니다.<br /><br/>
 	<b>* 화면 설명 *</b><p/>
