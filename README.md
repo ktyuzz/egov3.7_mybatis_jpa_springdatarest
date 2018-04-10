@@ -4,4 +4,7 @@
 
 #참고
   - master  브랜치 : 오라클 버전
+   https://github.com/ktyuzz/egov3.7_mybatis_jpa_springdatarest
+   
   - oracle2mssql 브랜치   : MSSQL 버전
+   https://github.com/ktyuzz/egov3.7_mybatis_jpa_springdatarest/tree/oracle2mssql
