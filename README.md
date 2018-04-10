@@ -3,5 +3,5 @@
 
 
 #참고
-master  브랜치 : 오라클 버전
-oracle2mssql 브랜치   : MSSQL 버전
+  - master  브랜치 : 오라클 버전
+  - oracle2mssql 브랜치   : MSSQL 버전
