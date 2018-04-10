@@ -24,6 +24,16 @@
 	<!-- DataSource -->
 	<alias name="dataSource" alias="egov.dataSource" />
 
+	<!-- MsSQL -->
+	<beans profile="mssql">
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+			<property name="driverClassName" value="${Globals.mssql.DriverClassName}" />
+			<property name="url" value="${Globals.mssql.Url}" />
+			<property name="username" value="${Globals.mssql.UserName}" />
+			<property name="password" value="${Globals.mssql.Password}" />
+		</bean>
+	</beans>
+	
 	<!-- MySQL -->
 	<beans profile="mysql">
 		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">

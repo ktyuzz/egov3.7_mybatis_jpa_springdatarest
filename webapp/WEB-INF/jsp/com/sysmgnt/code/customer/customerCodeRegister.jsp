@@ -1,6 +1,6 @@
 <%
 /**
- * @JSP Name : egovCategoryRegister.jsp
+ * @JSP Name : egovCustomerCodeRegister.jsp
  * @Description : 카테고리 등록,수정 화면
  * @Modification Information
  * 
@@ -24,7 +24,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<c:set var="registerFlag" value="${empty category.ctgryId ? '등록' : '수정'}"/>
+<c:set var="registerFlag" value="${empty CustomerCode.ctgryId ? '등록' : '수정'}"/>
 <title>JPA/Hibernate 예제 : 카테고리 <c:out value="${registerFlag}"/> </title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/com/com.css' />">
@@ -35,7 +35,7 @@
 
 /* 글 목록 화면 function */
 function fn_egov_selectList() {
-   	document.detailForm.action = "<c:url value='/cgr/egovCategoryList.do'/>";
+   	document.detailForm.action = "<c:url value='/com/sysmgnt/code/customer/customerCodeList.do'/>";
    	document.detailForm.submit();		
 }
 
@@ -44,7 +44,7 @@ function fn_egov_delete() {
 	if(!confirm("삭제하시겠습니까?")){
 		return;
 	}
-   	document.detailForm.action = "<c:url value='/cgr/deleteCategory.do'/>";
+   	document.detailForm.action = "<c:url value='/com/sysmgnt/code/customer/deleteCustomerCode.do'/>";
    	document.detailForm.submit();		
 }
 
@@ -61,7 +61,7 @@ function fn_egov_save() {
 		return;
 	}
 	
-	frm.action = "<c:url value="${registerFlag == '등록' ? '/cgr/insertCategory.do' : '/cgr/updateCategory.do'}"/>";
+	frm.action = "<c:url value="${registerFlag == '등록' ? '/com/sysmgnt/code/customer/insertCustomerCode.do' : '/com/sysmgnt/code/customer/updateCustomerCode.do'}"/>";
     frm.submit();
 }
 
@@ -71,7 +71,7 @@ function fn_egov_save() {
 <body>
 <!-- javascript warning tag  -->
 <noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript>
-<form:form commandName="category" name="detailForm" action="${pageContext.request.contextPath}/cgr/insertCategory.do" method="post" onSubmit="fncAuthorInsert(document.forms[0]); return false;"> 
+<form:form commandName="CustomerCode" name="detailForm" action="${pageContext.request.contextPath}/com/sysmgnt/code/customer/insertCustomerCode.do" method="post" onSubmit="fncAuthorInsert(document.forms[0]); return false;"> 
 <div class="wTableFrm">
 	<!-- 타이틀 -->
 	<h2>${pageTitle} <spring:message code="title.create" /></h2>
@@ -83,13 +83,13 @@ function fn_egov_save() {
 		<tr>
 			<td ><spring:message code="cgr.header.nm" /></td>
 			<td class="left">
-				<form:input path="ctgryNm" maxlength="30" cssClass="txt"  style="width:95%;" title="카테고리명"/>&nbsp;&nbsp;&nbsp;<form:errors path="ctgryNm" />
+				<%-- <form:input path="ctgryNm" maxlength="30" cssClass="txt"  style="width:95%;" title="카테고리명"/>&nbsp;&nbsp;&nbsp;<form:errors path="ctgryNm" /> --%>
 			</td>
 		</tr>
 		<tr>
 			<td ><spring:message code="cgr.header.dc" /></td>
 			<td class="left">
-				<form:textarea path="dc" rows="5" cols="58" />&nbsp;&nbsp;&nbsp;&nbsp;<form:errors path="dc" />
+				<%-- <form:textarea path="dc" rows="5" cols="58" />&nbsp;&nbsp;&nbsp;&nbsp;<form:errors path="dc" /> --%>
 			</td>
 		</tr>
 	</tbody>
@@ -102,7 +102,7 @@ function fn_egov_save() {
 			<span class="btn_s" title="<spring:message code="button.delete" />"><a href="#link" onClick="fn_egov_delete(); return false;"><spring:message code="button.delete" /></a></span>
 		</c:if>
 		<span class="btn_s" title="<spring:message code="button.reset" />"><a href="#link" onClick="javascript:document.detailForm.reset(); return false;"><spring:message code="button.reset" /></a></span>
-		<span class="btn_s" title="<spring:message code="button.list" />"><a href="<c:url value='/cgr/egovCategoryList.do' />" ><spring:message code="button.list" /></a></span>
+		<span class="btn_s" title="<spring:message code="button.list" />"><a href="<c:url value='/com/sysmgnt/code/customer/customerCodeList.do' />" ><spring:message code="button.list" /></a></span>
 	</div><div style="clear:both;"></div>
 	
 </div>

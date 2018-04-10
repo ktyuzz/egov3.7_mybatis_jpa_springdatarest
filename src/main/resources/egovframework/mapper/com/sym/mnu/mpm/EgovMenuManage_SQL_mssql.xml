@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--
+<!-- 
 	수정일                 수정자                          수정내용
   =========     =======    =================================================
   2011.8.22  	서준식     	 	상위 메뉴번호 존재여부 조회 selectUpperMenuNoByPk 추가
-
+  							
 
 -->
 <mapper namespace="menuManageDAO">
+
 	<select id="selectMenuManageList_D" parameterType="comDefaultVO" resultType="egovMap">
-	/*  WHERE rn BETWEEN firstIndex + 1 AND firstIndex + recordCountPerPage */
 		<![CDATA[ 
-		       SELECT * FROM ( SELECT ROW_NUMBER() OVER(ORDER BY menuNo ) rn, TB.* FROM (
-					SELECT
+		       SELECT * FROM ( SELECT ROW_NUMBER() OVER(ORDER BY menuNo ASC) rn, TB.* FROM (
+					SELECT 
 						  MENU_NO           AS "menuNo"
 						, MENU_ORDR         AS "menuOrdr"
 						, MENU_NM           AS "menuNm"
@@ -21,11 +21,11 @@
 						, RELATE_IMAGE_PATH AS "relateImagePath"
 						, RELATE_IMAGE_NM   AS "relateImageNm"
 						, PROGRM_FILE_NM    AS "progrmFileNm"
-					FROM COMTNMENUINFO
+					FROM COMTNMENUINFO 
 					WHERE MENU_NM like '%'+ #{searchKeyword}+'%'
-		       ) TB )_TMP 
+		       ) TB ) _TMP  WHERE rn BETWEEN #{firstIndex} + 1 AND #{firstIndex} + #{recordCountPerPage}
 		 ]]>
-	</select>
+	</select> 
 
 	<!-- 총건수 조회 -->
 	<select id="selectMenuManageListTotCnt_S" parameterType="comDefaultVO" resultType="int">
@@ -39,7 +39,7 @@
 
 	<select id="selectMenuManage_D" parameterType="comDefaultVO" resultType="menuManageVO">
 		<![CDATA[ 
-			SELECT
+			SELECT 
 				  MENU_NO           AS "menuNo"
 				, MENU_ORDR         AS "menuOrdr"
 				, MENU_NM           AS "menuNm"
@@ -52,10 +52,10 @@
 			WHERE MENU_NO = #{searchKeyword}
 		]]>
 	</select>
-
+	
 	<insert id="insertMenuManage_S">
 		<![CDATA[ 
-			INSERT INTO COMTNMENUINFO
+			INSERT INTO COMTNMENUINFO 
 				( MENU_NO
             , MENU_ORDR
             , MENU_NM
@@ -77,7 +77,7 @@
 
 	<update id="updateMenuManage_S">
 		<![CDATA[ 
-			UPDATE COMTNMENUINFO
+			UPDATE COMTNMENUINFO 
 			SET  MENU_ORDR         = #{menuOrdr}
             , MENU_NM           = #{menuNm}
             , UPPER_MENU_NO     = #{upperMenuId}
@@ -90,12 +90,12 @@
 	</update>
 
 	<delete id="deleteMenuManage_S">
-		<![CDATA[ 
-			DELETE FROM COMTNMENUINFO
-			WHERE MENU_NO=#{menuNo}
-		]]>
-	</delete>
-
+		<![CDATA[                           
+			DELETE FROM COMTNMENUINFO              
+			WHERE MENU_NO=#{menuNo}        
+		]]>                                
+	</delete> 
+	
 	<!-- 메뉴번호 존재여부 조회 -->
 	<select id="selectMenuNoByPk" parameterType="menuManageVO" resultType="int">
 		<![CDATA[ 
@@ -104,7 +104,7 @@
 		 WHERE MENU_NO = #{menuNo}
 		]]>
 	</select>
-
+	
 	<!-- 상위 메뉴번호 존재여부 조회 -->
 	<select id="selectUpperMenuNoByPk" parameterType="menuManageVO" resultType="int">
 		<![CDATA[ 
@@ -115,7 +115,7 @@
 	</select>
 
 	<select id="selectMenuListT_D" parameterType="comDefaultVO" resultType="egovMap">
-		<![CDATA[ 
+		<![CDATA[  
             SELECT
 			      MENU_NO           AS "menuNo"
 				, MENU_ORDR         AS "menuOrdr"
@@ -125,17 +125,17 @@
 				, RELATE_IMAGE_PATH AS "relateImagePath"
 				, RELATE_IMAGE_NM   AS "relateImageNm"
 				, PROGRM_FILE_NM    AS "progrmFileNm"
-			FROM COMTNMENUINFO
-			WHERE Menu_NO > 0
+			FROM COMTNMENUINFO 
+			WHERE Menu_NO > 0 
 			ORDER BY MENU_ORDR
-		]]>
+		]]> 
 	</select>
 
 	<delete id="deleteAllMenuList" >
-		<![CDATA[ 
-			DELETE FROM COMTNMENUINFO
-		]]>
-	</delete>
+		<![CDATA[                           
+			DELETE FROM COMTNMENUINFO              
+		]]>                                
+	</delete> 
 
 	<!-- 메뉴정보 총건수 조회 -->
 	<select id="selectMenuListTotCnt" parameterType="menuManageVO" resultType="int">
@@ -145,4 +145,4 @@
 		]]>
 	</select>
 
-</mapper>
+</mapper>                            

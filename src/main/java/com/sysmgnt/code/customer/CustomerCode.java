@@ -10,15 +10,8 @@ import lombok.Data;
 @Data
 @Entity//(name="CUSTOMER_CODE")
 public class CustomerCode {
-    /*
-    CREATE SEQUENCE STATE_SEQ
-    MINVALUE 1
-    MAXVALUE 9999999999
-    START WITH 4
-    INCREMENT BY 1;*/
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "STATE_SEQUENCE")
-    @SequenceGenerator(sequenceName = "STATE_SEQ", allocationSize = 1, name = "STATE_SEQUENCE") 
+    @GeneratedValue
     private int     id;
     private String  code;
     private String  ceo;

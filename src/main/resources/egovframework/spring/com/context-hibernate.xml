@@ -27,7 +27,8 @@
 				<prop key="hibernate.naming.physical-strategy">org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl</prop> 
 				-->
 				<prop key="hibernate.hbm2ddl.auto">validate</prop>
-				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</prop>
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop> -->
 				<prop key="hibernate.show_sql">true</prop>                
 				<prop key="hibernate.format_sql">true</prop>                
 				<prop key="hibernate.use_sql_comments">true</prop>         
@@ -37,3 +38,69 @@
 	</bean>
 	
 </beans>
+<!--
+
+클래스 명 ▶▶▶▶▶▶▶▶ 설명
+
+AbstractHANADialect ▶▶▶▶▶An abstract base class for HANA dialects.
+Cache71Dialect ▶▶▶▶▶Caché 2007.1 dialect.
+CUBRIDDialect ▶▶▶▶▶An SQL dialect for CUBRID (8.3.x and later).
+DataDirectOracle9Dialect ▶▶▶▶▶A Dialect for accessing Oracle through DataDirect driver
+DB2390Dialect ▶▶▶▶▶An SQL dialect for DB2/390.
+DB2400Dialect ▶▶▶▶▶An SQL dialect for DB2/400.
+DB2Dialect ▶▶▶▶▶An SQL dialect for DB2.
+DerbyDialect	Deprecated HHH▶6073
+DerbyTenFiveDialect ▶▶▶▶▶Hibernate Dialect for Cloudscape 10 ▶ aka Derby.
+DerbyTenSevenDialect ▶▶▶▶▶Dialect for Derby 10.7
+DerbyTenSixDialect ▶▶▶▶▶Hibernate Dialect for Cloudscape 10 ▶ aka Derby.
+Dialect ▶▶▶▶▶Represents a dialect of SQL implemented by a particular RDBMS.
+FirebirdDialect ▶▶▶▶▶An SQL dialect for Firebird.
+FrontBaseDialect ▶▶▶▶▶An SQL Dialect for Frontbase.
+H2Dialect ▶▶▶▶▶A dialect compatible with the H2 database.
+HANAColumnStoreDialect ▶▶▶▶▶An SQL dialect for HANA.
+HANARowStoreDialect ▶▶▶▶▶An SQL dialect for HANA.
+HSQLDialect ▶▶▶▶▶An SQL dialect compatible with HSQLDB (HyperSQL).
+InformixDialect ▶▶▶▶▶Informix dialect. Seems to work with Informix Dynamic Server Version 7.31.UD3, Informix JDBC driver version 2.21JC3.
+Ingres10Dialect ▶▶▶▶▶A SQL dialect for Ingres 10 and later versions.
+Ingres9Dialect ▶▶▶▶▶A SQL dialect for Ingres 9.3 and later versions.
+IngresDialect ▶▶▶▶▶An SQL dialect for Ingres 9.2.
+InterbaseDialect ▶▶▶▶▶An SQL dialect for Interbase.
+JDataStoreDialect ▶▶▶▶▶A Dialect for JDataStore.
+MckoiDialect ▶▶▶▶▶An SQL dialect compatible with McKoi SQL
+MimerSQLDialect ▶▶▶▶▶An Hibernate 3 SQL dialect for Mimer SQL.
+MySQL57InnoDBDialect ▶▶▶▶▶MySQL5Dialect ▶▶▶▶▶An SQL dialect for MySQL 5.x specific features.
+MySQL5InnoDBDialect ▶▶▶▶▶A Dialect for MySQL 5 using InnoDB engine
+MySQLDialect ▶▶▶▶▶An SQL dialect for MySQL (prior to 5.x).
+MySQLInnoDBDialect ▶▶▶▶▶A Dialect for MySQL using InnoDB engine
+MySQLMyISAMDialect ▶▶▶▶▶A Dialect for MySQL using the MyISAM engine
+Oracle10gDialect ▶▶▶▶▶A dialect specifically for use with Oracle 10g.
+Oracle8iDialect ▶▶▶▶▶A dialect for Oracle 8i.
+Oracle9Dialect	Deprecated  Use either Oracle9iDialect or Oracle10gDialect instead
+Oracle9iDialect ▶▶▶▶▶A dialect for Oracle 9i databases.
+OracleDialect	▶▶▶▶▶Deprecated  Use Oracle8iDialect instead.
+OracleTypesHelper  ▶▶▶▶▶  A Helper for dealing with the OracleTypes class
+PointbaseDialect ▶▶▶▶▶A Dialect for Pointbase.
+PostgresPlusDialect ▶▶▶▶▶An SQL dialect for Postgres Plus
+PostgreSQL81Dialect ▶▶▶▶▶An SQL dialect for Postgres    For discussion of BLOB support in Postgres, as of 8.4, have a peek at http://jdbc.postgresql.org/documentation/84/binary▶data.html.
+PostgreSQL82Dialect ▶▶▶▶▶An SQL dialect for Postgres 8.2 and later, adds support for "if exists" when dropping tables
+PostgreSQL9Dialect ▶▶▶▶▶An SQL dialect for Postgres 9 and later.
+PostgreSQLDialect	Deprecated  use PostgreSQL82Dialect instead
+ProgressDialect ▶▶▶▶▶An SQL dialect compatible with Progress 9.1C
+
+Connection Parameters required: hibernate.dialect org.hibernate.sql.ProgressDialect hibernate.driver com.progress.sql.jdbc.JdbcProgressDriver hibernate.url jdbc:JdbcProgress:T:host:port:dbname;WorkArounds=536870912 hibernate.username username hibernate.password password The WorkArounds parameter in the URL is required to avoid an error in the Progress 9.1C JDBC driver related to PreparedStatements.
+RDMSOS2200Dialect ▶▶▶▶▶This is the Hibernate dialect for the Unisys 2200 Relational Database (RDMS).
+SAPDBDialect ▶▶▶▶▶An SQL dialect compatible with SAP DB.
+SQLServer2005Dialect ▶▶▶▶▶A dialect for Microsoft SQL 2005.
+SQLServer2008Dialect ▶▶▶▶▶A dialect for Microsoft SQL Server 2008 with JDBC Driver 3.0 and above
+SQLServer2012Dialect ▶▶▶▶▶Microsoft SQL Server 2012 Dialect
+SQLServerDialect ▶▶▶▶▶A dialect for Microsoft SQL Server 2000
+Sybase11Dialect ▶▶▶▶▶A SQL dialect suitable for use with Sybase 11.9.2 (specifically: avoids ANSI JOIN syntax)
+SybaseAnywhereDialect ▶▶▶▶▶SQL Dialect for Sybase Anywhere extending Sybase (Enterprise) Dialect (Tested on ASA 8.x)
+SybaseASE157Dialect ▶▶▶▶▶An SQL dialect targeting Sybase Adaptive Server Enterprise (ASE) 15.7 and higher.
+SybaseASE15Dialect ▶▶▶▶▶An SQL dialect targeting Sybase Adaptive Server Enterprise (ASE) 15 and higher.
+SybaseDialect ▶▶▶▶▶All Sybase dialects share an IN list size limit.
+TeradataDialect ▶▶▶▶▶A dialect for the Teradata database created by MCR as part of the dialect certification process.
+TimesTenDialect ▶▶▶▶▶A SQL dialect for TimesTen 5.1.
+TypeNames  ▶▶▶▶▶ This class maps a type to names.
+
+ -->

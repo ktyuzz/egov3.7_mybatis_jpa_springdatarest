@@ -11,16 +11,8 @@ import lombok.Data;
 @Data   
 @Entity
 public class AdminLog {
-    /*
-     * CREATE SEQUENCE ADMIN_LOG_SEQ
-     * MINVALUE 1
-     * MAXVALUE 9999999999
-     * START WITH 1
-     * INCREMENT BY 1;
-     */
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ADMIN_LOG_SEQUENCE")
-    @SequenceGenerator(sequenceName = "ADMIN_LOG_SEQ", allocationSize = 1, name = "ADMIN_LOG_SEQUENCE")
+    @GeneratedValue
     private int     id;
     private String  url;
     private String  userId;

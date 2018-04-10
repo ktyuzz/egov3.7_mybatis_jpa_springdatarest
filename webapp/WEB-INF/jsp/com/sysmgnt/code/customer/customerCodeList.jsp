@@ -39,13 +39,13 @@ function press() {
 /* 글 수정 화면 function */
 function fn_egov_select(id) {
 	document.listForm.selectedId.value = id;
-   	document.listForm.action = "<c:url value='/cgr/updateCategoryView.do'/>";
+   	document.listForm.action = "<c:url value='/com/sysmgnt/code/customer/updateCustomerCodeView.do'/>";
    	document.listForm.submit();		
 }
 
 /* 글 등록 화면 function */
 function fn_egov_addView() {
-   	document.listForm.action = "<c:url value='/cgr/insertCategoryView.do'/>";
+   	document.listForm.action = "<c:url value='/com/sysmgnt/code/customer/insertCustomerCodeView.do'/>";
    	document.listForm.submit();		
 }
 
@@ -54,7 +54,7 @@ function fn_egov_addView() {
 <body>
 <!-- javascript warning tag  -->
 <noscript class="noScriptTitle"><spring:message code="common.noScriptTitle.msg" /></noscript>
-<form:form commandName="searchVO" name="listForm" action="${pageContext.request.contextPath}/cgr/egovCategoryList.do" method="post">
+<form:form commandName="searchVO" name="listForm" action="${pageContext.request.contextPath}/com/sysmgnt/code/customer/customerCodeList.do" method="post">
 <input type="hidden" name="selectedId" />
 <div class="board">
 	<h1>${pageTitle} <spring:message code="title.list" /></h1>

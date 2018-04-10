@@ -1,0 +1,50 @@
+1. mybatis 문법으로 변환
+  1.1. replace하기(editor plus에서 진행하면 수월)
+      - 줄끝공백 제거하기
+      -  #          ->   #{    : No정규식 변환
+      -  #\{$    ->      }   : 정규식 변환 
+      -  #\{\+    ->     }\+   : 정규식 변환 
+      -  #\{\)    ->     }\)   : 정규식 변환 
+      -  #\{    ->      }     : 정규식 변환(띄어쓰기 있음! 주의) 
+
+  1.2. 태그변환하기
+      - before : isEqual 
+        after :  if 
+
+	  - before : <isEqual prepend="AND" property="searchCondition" compareValue="1"></isEqual>
+		after : <if test="searchCondition== '1'"></if>
+
+  1.3. MSSQL->ORACLE은 별도 쿼리변환하기 참고
+
+2. mybatis-config.xml내 설정정보 추가
+  2.1. typeAlias 옮기기
+  2.2. mapper resource 정의하기
+  
+3. 자바레이어 변경사항
+	● 추상DAO클래스 의 부모 클래스 변경 (EgovAbstractDAO -> EgovAbstractMapper)
+	 - before : public abstract class EgovComAbstractDAO extends EgovAbstractDAO{
+        after : public abstract class EgovComAbstractDAO extends EgovAbstractMapper{
+
+	● 호출 메소드명 변경(selectMap - > selectOne )
+	 - before : public int selectSampleListTotCnt(SampleDefaultVO searchVO) {
+				    return (Integer) selectMap("selectSampleListTotCnt", searchVO);
+				}
+        after : public int selectSampleListTotCnt(SampleDefaultVO searchVO) {
+				    return (Integer) selectOne("selectSampleListTotCnt", searchVO);
+				}
+				
+	● 호출 메소드명 변경(selectByPk - > selectOne )
+	 - before : public BoardMasterVO selectNotUsedBdMstr(BoardMasterVO vo) throws Exception {
+					return selectByPk("BBSAttributeManageDAO.selectNotUsedBdMstrList", vo);
+				}
+        after : public BoardMasterVO selectNotUsedBdMstr(BoardMasterVO vo) throws Exception {
+				    return selectOne("BBSAttributeManageDAO.selectNotUsedBdMstrList", vo);
+				}
+				
+	● 호출 메소드명 변경(list - > selectList )
+	 - before : public List<BoardMasterVO> selectNotUsedBdMstrList(BoardMasterVO vo) throws Exception {
+					return (List<BoardMasterVO>) list("BBSAttributeManageDAO.selectNotUsedBdMstrList", vo);
+				}
+        after : public List<BoardMasterVO> selectNotUsedBdMstrList(BoardMasterVO vo) throws Exception {
+				    return selectList("BBSAttributeManageDAO.selectNotUsedBdMstrList", vo);
+				}
