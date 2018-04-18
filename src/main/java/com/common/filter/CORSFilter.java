@@ -50,7 +50,7 @@ public class CORSFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         // Authorize (allow) all domains to consume the content
         response.setHeader("Access-Control-Allow-Origin", "*"); // application/x-spring-data-verbose+json
-        response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
+        response.setHeader("Access-Control-Allow-Methods", "OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT, PATCH");
         response.setHeader("Access-Control-Allow-Credentials", "true");
         response.setHeader("Access-Control-Max-Age", "86400"); // 86400초=24시간, 3600초=1시간
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with, origin, content-type, accept, authorization");
